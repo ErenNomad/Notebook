@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Not Defteri</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Not Defteri</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>İçerik</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var note in ViewBag.Notes)
+                {
+                    <tr>
+                        <td>@note.Title</td>
+                        <td>@note.Content</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Yeni not ekleme formu -->
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/Home/Create" method="post">
+                    <div class="form-group">
+                        <input class="form-control" name="Title" placeholder="Başlık" required />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="Content" placeholder="İçerik" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
